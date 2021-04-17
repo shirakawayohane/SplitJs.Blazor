@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Pack and publish nuget package.
 
 # Controls when the action will run. 
 on:
@@ -26,6 +26,6 @@ jobs:
     - name: Build
       run: dotnet build ./src/SplitJs.Blazor/SplitJs.Blazor.csproj --configuration Release
     - name: Pack
-      run: dotnet pack ./src/SplitJs.Blazor/SplitJs.Blazor.csproj  --output .\artifacts --configuration Release
+      run: dotnet pack ./src/SplitJs.Blazor/SplitJs.Blazor.csproj  --output ./artifacts --configuration Release
     - name: Publish
       run: nuget push ./artifacts/$(ls ./artifacts | grep .nupkg) -s https://api.nuget.org/v3/index.json -k secrets.NUGET_API_KEY
