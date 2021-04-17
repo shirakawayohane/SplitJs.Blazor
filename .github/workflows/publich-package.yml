@@ -1,0 +1,31 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    - name: Build
+      run: dotnet build ./src/SplitJs.Blazor/SplitJs.Blazor.csproj --configuration Release
+    - name: Pack
+      run: dotnet pack ./src/SplitJs.Blazor/SplitJs.Blazor.csproj  --output .\artifacts --configuration Release
+    - name: Publish
+      run: nuget push ./artifacts/$(ls ./artifacts | grep .nupkg) -s https://api.nuget.org/v3/index.json -k secrets.NUGET_API_KEY
