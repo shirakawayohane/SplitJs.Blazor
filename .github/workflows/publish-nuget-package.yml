@@ -28,4 +28,4 @@ jobs:
     - name: Pack
       run: dotnet pack ./src/SplitJs.Blazor/SplitJs.Blazor.csproj  --output ./artifacts --configuration Release
     - name: Publish
-      run: dotnet nuget push ./artifacts/$(ls ./artifacts | grep .nupkg) -s https://api.nuget.org/v3/index.json -k secrets.NUGET_API_KEY
+      run: dotnet nuget push ./artifacts/$(ls ./artifacts | grep .nupkg) -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET_API_KEY}}
