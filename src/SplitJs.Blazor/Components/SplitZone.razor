@@ -1,0 +1,46 @@
+﻿@inject IJSRuntime js;
+<div class="@Class" style=@Style>
+    <CascadingValue Value="LazyEnsureLoadModule()" Name="ModuleLoader" TValue="ValueTask<IJSObjectReference>">
+        @ChildContent
+    </CascadingValue>
+</div>
+<style>
+    .split {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        flex-direction: row;
+    }
+
+    .gutter {
+        background-color: #eee;
+        background-repeat: no-repeat;
+        background-position: 50%;
+    }
+
+        .gutter.gutter-horizontal {
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
+            cursor: col-resize;
+        }
+
+        .gutter.gutter-vertical {
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
+            cursor: row-resize;
+        }
+</style>
+@code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+    [Parameter]
+    public string Class { get; set; }
+    [Parameter]
+    public string Style { get; set; }
+
+    IJSObjectReference? module;
+
+    protected async ValueTask<IJSObjectReference> LazyEnsureLoadModule()
+    {
+        module = await js.InvokeAsync<IJSObjectReference>("import", "./_content/SplitJs.Blazor/js/split.es.js");
+        return module;
+    }
+}

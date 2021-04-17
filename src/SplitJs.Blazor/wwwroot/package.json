@@ -1,0 +1,14 @@
+{
+  "name": "splitjs-blazor",
+  "version": "0.1.0",
+  "description": "splitjs blazor(c#) wrapper.",
+  "main": "js/SplitJsInterop.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "WiZ3910",
+  "license": "MIT",
+  "dependencies": {
+    "split.js": "^1.6.4"
+  }
+}

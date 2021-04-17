@@ -1,0 +1,47 @@
+﻿<div id=@id class="split @Class" style="@Style">
+    @ChildContent
+</div>
+<!--
+    ElementReferenceは OnAfterRenderでしか扱えない
+    => ライフタイムによって、親エレメントの更新のタイミングをコントロールするのが難しい。
+        そのため、Guidに変更
+
+    ElementReference is only to be handled in OnAfterRender(Async)
+    which makes it difficult to control when to update state in parent component
+    thus I use Guid instead of ElementReference.
+-->
+@code {
+    [CascadingParameter(Name = "SplitArea")]
+    public SplitAreaBase? SplitArea { get; set; }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+    [Parameter]
+    public int MinSizePx { get; set; } = int.MinValue;
+    [Parameter]
+    public int MaxSizePx { get; set; } = int.MaxValue;
+    [Parameter]
+    public int Size { get; set; } = 50;
+    [Parameter]
+    public string Class { get; set; }
+    [Parameter]
+    public string Style { get; set; }
+
+    public string id;
+    protected override void OnInitialized()
+    {
+        this.id = "split-" + Guid.NewGuid().ToString();
+        if (SplitArea != null)
+        {
+            SplitArea.NotifySize(Size);
+            SplitArea.NotifyMaxSize(MaxSizePx);
+            SplitArea.NotifyMinSize(MinSizePx);
+            SplitArea.NotifyExistence(id);
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+    }
+}

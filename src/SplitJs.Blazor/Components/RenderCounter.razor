@@ -1,0 +1,14 @@
+﻿@Count
+@code {
+    public uint Count;
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender) return;
+        Count = Counter.Count++;
+        StateHasChanged();
+    }
+    static class Counter
+    {
+        public static uint Count = 0;
+    }
+}
