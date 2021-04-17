@@ -4,7 +4,7 @@
 		<TargetFramework>net5.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<AssemblyName>SplitJs.Blazor</AssemblyName>
-		<Version>0.1.3</Version>
+		<Version>0.2.0</Version>
 		<Authors>WiZ3910</Authors>
 		<Company>CySharp</Company>
 		<Product>SplitJs.Blazor</Product>
@@ -25,10 +25,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Content Remove="wwwroot\js\SplitJsInterop.ts" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<None Include="wwwroot\js\split.es.js" />
 	</ItemGroup>
 
@@ -37,10 +33,6 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-	</ItemGroup>
-
-	<ItemGroup>
-		<TypeScriptCompile Include="wwwroot\js\SplitJsInterop.ts" />
 	</ItemGroup>
 
 </Project>
