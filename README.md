@@ -113,3 +113,5 @@ Please __Note that you should use Vertical tag first and enclose Horizontal tag.
 
 
 ## Special Thanks
+Split.js author
+https://github.com/nathancahill/
