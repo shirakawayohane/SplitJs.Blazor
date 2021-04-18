@@ -1,7 +1,7 @@
 # SplitJs.Blazor
 
-[![Build and test](https://github.com/WiZ3910/SplitJs.Blazor/actions/workflows/build-debug.yml/badge.svg)](https://github.com/WiZ3910/SplitJs.Blazor/actions/workflows/build-debug.yml)
-[![Publish](https://github.com/WiZ3910/SplitJs.Blazor/actions/workflows/publish-nuget-package.yml/badge.svg)](https://github.com/WiZ3910/SplitJs.Blazor/actions/workflows/publish-nuget-package.yml)
+[![Build and Test](https://github.com/WiZ3910/SplitJs.Blazor/actions/workflows/build-debug.yml/badge.svg)](https://github.com/WiZ3910/SplitJs.Blazor/actions/workflows/build-debug.yml)
+[![Release](https://github.com/WiZ3910/SplitJs.Blazor/actions/workflows/publish-nuget-package.yml/badge.svg?event=push)](https://github.com/WiZ3910/SplitJs.Blazor/actions/workflows/publish-nuget-package.yml)
 
 A component wrapper of split.js for Blazor.
 
