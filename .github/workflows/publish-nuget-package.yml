@@ -4,18 +4,11 @@ name: Pack and publish nuget package
 
 # Controls when the action will run. 
 on:
-  workflow_dispatch:
-    inputs:
-      tag:
-        description: "tag: git tag you want create. (sample 1.0.0)"
-        required: true
-      dry_run:
-        description: "dry_run: true will never create relase/nuget."
-        required: true
-        default: "false"
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+  push:
+    branches-ignore:
+      - '**'
+    tags:
+      - 'v*'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
