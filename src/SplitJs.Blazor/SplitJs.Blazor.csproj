@@ -4,14 +4,13 @@
 		<TargetFramework>net5.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<AssemblyName>SplitJs.Blazor</AssemblyName>
-		<Version>0.2.0</Version>
+		<Version>0.2.1</Version>
 		<Authors>WiZ3910</Authors>
 		<Company>CySharp</Company>
 		<Product>SplitJs.Blazor</Product>
 		<Copyright>WiZ3910</Copyright>
-		<Description>
-			SplitJs wrapper for Blazor.
-			See https://github.com/nathancahill/split/tree/master/packages/splitjs
+		<Description>SplitJs wrapper for Blazor.
+See https://github.com/nathancahill/split/tree/master/packages/splitjs
 		</Description>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/WiZ3910/SplitJs.Blazor</PackageProjectUrl>
