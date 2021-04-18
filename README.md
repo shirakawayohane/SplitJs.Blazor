@@ -3,7 +3,9 @@
 [![Build and test](https://github.com/WiZ3910/SplitJs.Blazor/actions/workflows/build-debug.yml/badge.svg)](https://github.com/WiZ3910/SplitJs.Blazor/actions/workflows/build-debug.yml)
 [![Publish](https://github.com/WiZ3910/SplitJs.Blazor/actions/workflows/publish-nuget-package.yml/badge.svg)](https://github.com/WiZ3910/SplitJs.Blazor/actions/workflows/publish-nuget-package.yml)
 
-This is a component wrapper of split.js for Blazor.
+A component wrapper of split.js for Blazor.
+
+![demo](https://gyazo.com/1ad06abffe27a8c4185cf6f65dd8a5a0)
 
 See also https://github.com/nathancahill/split/tree/master/packages/splitjs
 ## Installation
@@ -34,18 +36,20 @@ This component is the most basic component that will be rendered as split column
 
 ## Sample
 ```html
-<SplitZone>
+<SplitZone Style="height:500px;">
     <Vertical GutterSize="10">
-        <Split MinSizePx="0" Style="height: 300px">
-            <p>Upper</p>
+        <Split MinSizePx="0" Style="background-color:#b6ff00">
+            <h1>
+                Hello!
+            </h1>
         </Split>
         <Split MinSizePx="0">
             <Horizontal GutterSize="10">
-                <Split Size="40" MinSizePx="0">
-                    Lower Left
+                <Split Size="40" MinSizePx="0" Style="background-color:#ea9797">
+                    <h1>Blazor</h1>
                 </Split>
-                <Split Size="60" MinSizePx="0">
-                    Lower Right
+                <Split Size="60" MinSizePx="0" Style="background-color:#639ac8">
+                    <h1>Split.js</h1>
                 </Split>
             </Horizontal>
         </Split>

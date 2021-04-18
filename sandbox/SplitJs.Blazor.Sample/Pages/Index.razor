@@ -1,16 +1,18 @@
 ﻿@page "/"
-<SplitZone>
+<SplitZone Style="height:500px;">
     <Vertical GutterSize="10">
-        <Split MinSizePx="0" Style="height: 300px">
-            <p>Upper</p>
+        <Split MinSizePx="0" Style="background-color:#b6ff00">
+            <h1>
+                Hello!
+            </h1>
         </Split>
         <Split MinSizePx="0">
             <Horizontal GutterSize="10">
-                <Split Size="40" MinSizePx="0">
-                    Lower Left
+                <Split Size="40" MinSizePx="0" Style="background-color:#ea9797">
+                    <h1>Blazor</h1>
                 </Split>
-                <Split Size="60" MinSizePx="0">
-                    Lower Right
+                <Split Size="60" MinSizePx="0" Style="background-color:#639ac8">
+                    <h1>Split.js</h1>
                 </Split>
             </Horizontal>
         </Split>
