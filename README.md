@@ -5,9 +5,10 @@
 
 A component wrapper of split.js for Blazor.
 
-![demo](https://gyazo.com/1ad06abffe27a8c4185cf6f65dd8a5a0)
+![splitjs_blazor_demo](https://user-images.githubusercontent.com/7351910/115134748-e7fd5f80-a04d-11eb-8e79-5a25f8cad462.gif)
 
 See also https://github.com/nathancahill/split/tree/master/packages/splitjs
+
 ## Installation
 Installation is super easy.
 
