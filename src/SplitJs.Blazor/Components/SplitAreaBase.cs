@@ -17,8 +17,11 @@ namespace SplitJs.Blazor.Components
         public RenderFragment? ChildContent { get; set; }
         [Parameter]
         public string? GutterStyle { get; set; }
+        /// <summary>
+        /// Default value is 8
+        /// </summary>
         [Parameter]
-        public float GutterSize { get; set; } = 2;
+        public float GutterSize { get; set; } = 8;
 
         [Parameter]
         public string? GutterAlign { get; set; }
