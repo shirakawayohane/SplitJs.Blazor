@@ -13,15 +13,14 @@ namespace SplitJs.Blazor.Components
         [Inject] IJSRuntime? JS { get; set; }
         [CascadingParameter(Name = "ModuleLoader")]
         public ValueTask<IJSObjectReference> ModuleLoader { get; set; }
+        [CascadingParameter(Name = "CascadingOptions")]
+        public SplitOptions? CascadingOptions { get; set; }
         [Parameter]
         public RenderFragment? ChildContent { get; set; }
         [Parameter]
         public string? GutterStyle { get; set; }
-        /// <summary>
-        /// Default value is 8
-        /// </summary>
         [Parameter]
-        public float GutterSize { get; set; } = 8;
+        public float? GutterSize { get; set; }
 
         [Parameter]
         public string? GutterAlign { get; set; }
@@ -30,27 +29,41 @@ namespace SplitJs.Blazor.Components
         [Parameter]
         public int? DragInterval { get; set; }
 
+        private SplitOptions Options = new();
 
-
-        protected SplitOptions Option = new();
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender && Children.Count > 1)
             {
-                Option.GutterSize = GutterSize;
-                Option.GutterAlign = GutterAlign;
-                Option.SnapOffset = SnapOffset;
-                Option.DragInterval = DragInterval;
-                Option.Sizes = Sizes;
-                Option.MinSizes = MinSizes;
-                Option.MaxSizes = MaxSizes;
+                if (CascadingOptions != null)
+                {
+                    this.Options = CascadingOptions;
+                }
+
+                if (GutterSize != null)
+                    Options.GutterSize = GutterSize;
+                if (GutterAlign != null)
+                    Options.GutterAlign = GutterAlign;
+                if (SnapOffset != null)
+                    Options.SnapOffset = SnapOffset;
+                if (DragInterval != null)
+                    Options.DragInterval = DragInterval;
+                if (Sizes != null)
+                    Options.Sizes = Sizes;
+                if (MinSizes != null)
+                    Options.MinSizes = MinSizes;
+                if (MaxSizes != null)
+                    Options.MaxSizes = MaxSizes;
+
+                SetOptions(Options);
 
                 await (await ModuleLoader).InvokeVoidAsync("Split",
                     Children.Select(x => '#' + x).ToArray(),
-                    Option.ToInterOperable()
+                    Options.ToInterOperable()
                     );
             }
         }
+        protected abstract void SetOptions(SplitOptions options);
 
         protected List<string> Children = new();
         public void NotifyExistence(string id)
