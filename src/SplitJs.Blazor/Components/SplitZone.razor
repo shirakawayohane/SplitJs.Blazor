@@ -1,40 +1,64 @@
 ﻿@inject IJSRuntime js;
-<div class="@Class" style=@Style>
+<div class="@Class split-zone" style=@Style>
     <CascadingValue Value="LazyEnsureLoadModule()" Name="ModuleLoader" TValue="ValueTask<IJSObjectReference>">
         @ChildContent
     </CascadingValue>
 </div>
 <style>
-    .split {
-        display: flex;
-        height: 100%;
-        width: 100%;
-        flex-direction: row;
-    }
-
     .gutter {
-        background-color: #eee;
         background-repeat: no-repeat;
         background-position: 50%;
     }
+    .gutter {
+        @CommonGutterStyle
+    }
 
         .gutter.gutter-horizontal {
-            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
             cursor: col-resize;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
+        }
+
+        .gutter.gutter-horizontal {
+            @HorizontalGutterStyle
         }
 
         .gutter.gutter-vertical {
-            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
             cursor: row-resize;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=');
         }
+
+        .gutter.gutter-vertical {
+            @VerticalGutterStyle
+        }
+
+    vertical {
+        display: flex;
+        flex-direction: column;
+    }
+
+    horizontal {
+        display: flex;
+        flex-direction: row;
+    }
+
+    * {
+        width: 100%;
+        height: 100%;
+    }
 </style>
 @code {
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
     [Parameter]
-    public string Class { get; set; }
+    public string? Class { get; set; }
     [Parameter]
-    public string Style { get; set; }
+    public string? Style { get; set; }
+    [Parameter]
+    public string? CommonGutterStyle { get; set; }
+    [Parameter]
+    public string? HorizontalGutterStyle { get; set; }
+    [Parameter]
+    public string? VerticalGutterStyle { get; set; }
 
     IJSObjectReference? module;
 

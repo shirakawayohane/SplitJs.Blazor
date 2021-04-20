@@ -1,5 +1,25 @@
 ﻿@page "/"
-<SplitZone Style="height:500px;">
+<SplitZone Style="width:500px; height: 600px; border: 5px solid white; float:left">
+    <Horizontal GutterSize="10">
+        <Split MinSizePx="0" Style="background-color:#b6ff00">
+            <h1>
+                Hello!
+            </h1>
+        </Split>
+        <Split MinSizePx="0">
+            <Vertical GutterSize="10">
+                <Split Size="40" MinSizePx="0" Style="background-color:#ea9797;">
+                    <h1>Blazor</h1>
+                </Split>
+                <Split Size="60" MinSizePx="0" Style="background-color:#639ac8;">
+                    <h1>Split.js</h1>
+                </Split>
+            </Vertical>
+        </Split>
+    </Horizontal>
+</SplitZone>
+
+<SplitZone Style="width:500px; height: 600px; border: 5px solid white; float:left">
     <Vertical GutterSize="10">
         <Split MinSizePx="0" Style="background-color:#b6ff00">
             <h1>
@@ -8,21 +28,15 @@
         </Split>
         <Split MinSizePx="0">
             <Horizontal GutterSize="10">
-                <Split Size="40" MinSizePx="0" Style="background-color:#ea9797">
+                <Split Size="40" MinSizePx="0" Style="background-color:#ea9797;">
                     <h1>Blazor</h1>
                 </Split>
-                <Split Size="60" MinSizePx="0" Style="background-color:#639ac8">
+                <Split Size="60" MinSizePx="0" Style="background-color:#639ac8;">
                     <h1>Split.js</h1>
                 </Split>
             </Horizontal>
         </Split>
     </Vertical>
 </SplitZone>
-<style>
-    html body main .page .main .content {
-        width: 100%;
-        height: 100%;
-    }
-</style>
 @code {
 } 
