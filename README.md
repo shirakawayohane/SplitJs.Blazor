@@ -20,6 +20,10 @@ dotnet add package SplitJs.Blazor
 ```cs
 @using SplitJs.Blazor.Components 
 ```
+- Enable Nullable in your project
+```cs
+<Nullable>enable</Nullable>
+```
 
 ## Components
 This component lib has 4 components in all.
