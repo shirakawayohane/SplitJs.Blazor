@@ -19,6 +19,7 @@ namespace SplitJs.Blazor.Components
         public RenderFragment? ChildContent { get; set; }
         [Parameter]
         public string? GutterStyle { get; set; }
+        public string EmitGuttereStyle => GutterStyle != null ? ".gutter{" + GutterStyle + '}' : "";
         [Parameter]
         public float? GutterSize { get; set; }
 
