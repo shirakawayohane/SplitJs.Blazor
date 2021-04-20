@@ -12,11 +12,9 @@ namespace SplitJs.Blazor.Components
     /// </summary>
     public partial class Horizontal : SplitAreaBase
     {
-
-        protected override async Task OnAfterRenderAsync(bool firstRender)
+        protected override void SetOptions(SplitOptions options)
         {
-            Option.Direction = Direction.Horizontal;
-            await base.OnAfterRenderAsync(firstRender);
+            options.Direction = Direction.Horizontal;
         }
     }
 }

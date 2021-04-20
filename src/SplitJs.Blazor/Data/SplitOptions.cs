@@ -10,6 +10,7 @@ namespace SplitJs.Blazor.Data
         public ICollection<int>? Sizes;
         public ICollection<int>? MinSizes;
         public ICollection<int>? MaxSizes;
+        public string? GutterStyle;
         public bool? ExpandToMin;
         public float? GutterSize;
         public string? GutterAlign;

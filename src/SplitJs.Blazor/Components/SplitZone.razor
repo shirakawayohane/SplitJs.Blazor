@@ -1,7 +1,9 @@
 ﻿@inject IJSRuntime js;
 <div class="@Class split-zone" style=@Style>
     <CascadingValue Value="LazyEnsureLoadModule()" Name="ModuleLoader" TValue="ValueTask<IJSObjectReference>">
-        @ChildContent
+        <CascadingValue Value="CascadingOptions" Name="CascadingOptions">
+            @ChildContent
+        </CascadingValue>
     </CascadingValue>
 </div>
 <style>
@@ -58,11 +60,38 @@
     [Parameter]
     public string? VerticalGutterStyle { get; set; }
 
+    protected SplitOptions? CascadingOptions { get; set; }
+
+    [Parameter]
+    public string? GutterStyle { get; set; }
+    [Parameter]
+    public float? GutterSize { get; set; }
+    [Parameter]
+    public string? GutterAlign { get; set; }
+    [Parameter]
+    public int? SnapOffset { get; set; }
+    [Parameter]
+    public int? DragInterval { get; set; }
+
     IJSObjectReference? module;
 
-    protected async ValueTask<IJSObjectReference> LazyEnsureLoadModule()
+    protected override void OnInitialized()
     {
-        module = await js.InvokeAsync<IJSObjectReference>("import", "./_content/SplitJs.Blazor/js/split.es.js");
+        this.CascadingOptions = new SplitOptions()
+        {
+            GutterStyle = GutterStyle,
+            GutterSize = GutterSize,
+            GutterAlign = GutterAlign,
+            SnapOffset = SnapOffset,
+            DragInterval = DragInterval
+        };
+    }
+
+    protected async ValueTask<IJSObjectReference>
+    LazyEnsureLoadModule()
+    {
+        module = await js.InvokeAsync<IJSObjectReference>
+            ("import", "./_content/SplitJs.Blazor/js/split.es.js");
         return module;
     }
 }
