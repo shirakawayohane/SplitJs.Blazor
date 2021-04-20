@@ -23,15 +23,17 @@ dotnet add package SplitJs.Blazor
 
 ## Components
 This component lib has 4 components in all.
+
 ### ```<SplitZone>```
 First, you need to place ```<SplitZone>``` anyway.
 Why this component is required is because this component has some basic CSS classes, which are necessary to work with split.js.
 
 ### ```<Horizontal>```
 This component will render children ```<Split>``` component as horizontally split columns.
+
 ### ```<Vertical>```
 This component will render children ```<Split>``` component as vertically split rows.
-See also [Important note](#important-note)
+
 ### ```<Split>```
 This component is the most basic component that will be rendered as split columns/rows working with ```<Horizontal>``` or  ```<Vertical>``` components.
 
@@ -56,69 +58,7 @@ This component is the most basic component that will be rendered as split column
         </Split>
     </Vertical>
 </SplitZone>
-
 ```
-
-## Important Note
-Due to split.js limitation, when you want to nest split components like 
-```html
-<SplitZone>
-    <Horizontal>
-        <Split>
-            <Vertical>
-                <Split>
-                    Upper Left
-                </Split>
-                <Split>
-                    Lower Left
-                </Split>
-            </Vertical>
-        </Split>
-        <Split>
-            <Vertical>
-                <Split>
-                    Upper Right
-                </Split>
-                <Split>
-                    Lower Lower Right
-                </Split>
-            </Vertical>
-        </Split>
-    </Horizontal>
-</SplitZone>
-```
-or
-```html
-<SplitZone>
-    <Vertical>
-        <Split>
-            <Horizontal>
-                <Split>
-                    Upper Left
-                </Split>
-                <Split>
-                    Lower Left
-                </Split>
-            </Horizontal>
-        </Split>
-        <Split>
-            <Horizontal>
-                <Split>
-                    Upper Right
-                </Split>
-                <Split>
-                    Lower Lower Right
-                </Split>
-            </Horizontal>
-        </Split>
-    </Vertical>
-</SplitZone>
-```
-, the only latter one will work correctly.
-Please __Note that you should use Vertical tag first and enclose Horizontal tag.__
-
-
-
 
 ## Special Thanks
 Split.js author
