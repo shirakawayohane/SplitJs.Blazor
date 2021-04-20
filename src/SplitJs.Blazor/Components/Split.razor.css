@@ -1,8 +1,4 @@
-﻿
-.split {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
+﻿split {
     box-sizing: border-box;
-    overflow-y: auto;
-    overflow-x: auto;
+    overflow: auto;
 }
